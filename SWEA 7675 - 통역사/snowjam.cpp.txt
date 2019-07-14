@@ -1,0 +1,120 @@
+닫기 
+
+ 설잼 
+제출일 : 2019-07-11 02:02 
+C++ 
+언어
+12,484kb
+메모리
+6ms
+실행시간
+1,043B
+코드길이
+Pass
+결과
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+#include <iostream>
+#include <cctype>
+ 
+#define SIZE 500
+ 
+int word_name_n[500];
+ 
+int main(void)
+{
+    int T, N;
+    int name_cnt, sentence_cnt, name_flag, word_cnt;
+    char ch, pre;
+ 
+    scanf("%d", &T);
+ 
+    for (int t = 0; t < T; t++) {
+        name_flag = name_cnt = sentence_cnt = 0;
+        pre = ' ';
+ 
+        scanf("%d ", &N);
+ 
+        while (sentence_cnt < N) {
+            ch = getchar();
+ 
+            if (pre == ' ' && isupper(ch))
+                name_flag = 1;
+            else if (name_flag == 1 && isspace(ch)) {
+                name_cnt++;
+                name_flag = 0;
+            }
+            else if (name_flag == 1 && !islower(ch) && !(ch == '.' || ch == '!' || ch == '?'))
+                name_flag = 0;
+             
+            else if (name_flag == 1 && (ch == '.' || ch == '!' || ch == '?')) {
+                name_cnt++;
+                name_flag = 0;
+                word_name_n[sentence_cnt++] = name_cnt;
+                name_cnt = 0;
+            }
+            else if (name_flag == 0 && (ch == '.' || ch == '!' || ch == '?')) {
+                    word_name_n[sentence_cnt++] = name_cnt;
+                    name_cnt = 0;
+                 
+            }
+            pre = ch;
+        }
+        printf("#%d ", t + 1);
+ 
+        for (int i = 0; i < N; i++)
+            printf("%d ", word_name_n[i]);
+        printf("\n");
+    }
+}
