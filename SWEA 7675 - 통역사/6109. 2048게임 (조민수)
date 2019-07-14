@@ -1,0 +1,190 @@
+dires = ['up','down','left','right']
+def up(maps):
+    mapping = [[0]*N for i in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if maps[j][i] != 0:
+                for k in range(N):
+                    if mapping[k][i] == 0:
+                        mapping[k][i] = maps[j][i]
+                        break
+    return mapping
+
+def down(maps):
+    mapping = [[0]*N for i in range(N)]
+    for i in range(N):
+        for j in range(1,N+1):
+            if maps[N-j][i] != 0:
+                for k in range(1,N+1):
+                    if mapping[N-k][i] == 0:
+                        mapping[N-k][i] = maps[N-j][i]
+                        break
+    return mapping
+
+def left(maps):
+    mapping = [[0]*N for i in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if maps[i][j] != 0:
+                for k in range(N):
+                    if mapping[i][k] == 0:
+                        mapping[i][k] = maps[i][j]
+                        break
+    return mapping
+
+def right(maps):
+    mapping = [[0]*N for i in range(N)]
+    for i in range(N):
+        for j in range(1,N+1):
+            if maps[i][N-j] != 0:
+                for k in range(1,N+1):
+                    if mapping[i][N-k] == 0:
+                        mapping[i][N-k] = maps[i][N-j]
+                        break
+    return mapping
+
+
+def up_solve(maps):
+    mapping = [[0]*N for i in range(N)]
+    for i in range(N):
+        for j in range(N-1):
+            if maps[j][i] == maps[j+1][i]:
+                    
+                for k in range(N):
+                    if mapping[k][i] == 0:
+                        mapping[k][i] = 2*maps[j][i]
+                        break
+                    
+                maps[j][i] = 0
+                maps[j+1][i] = 0
+            elif maps[j][i] != 0:
+                for k in range(N):
+                    if mapping[k][i] == 0:
+                        mapping[k][i] = maps[j][i]
+                        break
+                maps[j][i] = 0
+                    
+        if maps[-1][i] != 0:
+            for k in range(N):
+                if mapping[k][i] == 0:
+                    mapping[k][i] = maps[N-1][i]
+                    break
+            maps[N-1][i] = 0
+    return mapping
+
+def down_solve(maps):
+    mapping = [[0]*N for i in range(N)]
+    for i in range(N):
+        for j in range(1,N):
+            if maps[N-j][i] == maps[N-j-1][i]:
+                    
+                for k in range(1,N+1):
+                    if mapping[N-k][i] == 0:
+                        mapping[N-k][i] = 2*maps[N-j][i]
+                        break
+                    
+                maps[N-j][i] = 0
+                maps[N-j-1][i] = 0
+            elif maps[N-j][i] != 0:
+                for k in range(1,N+1):
+                    if mapping[N-k][i] == 0:
+                        mapping[N-k][i] = maps[N-j][i]
+                        break
+                maps[N-j][i] = 0
+                    
+        if maps[0][i] != 0:
+            for k in range(1,N):
+                if mapping[N-k][i] == 0:
+                    mapping[N-k][i] = maps[0][i]
+                    break
+            maps[0][i] = 0
+    return mapping
+
+def left_solve(maps):
+    mapping = [[0]*N for i in range(N)]
+    for i in range(N):
+        for j in range(N-1):
+            if maps[i][j] == maps[i][j+1]:
+                    
+                for k in range(N):
+                    if mapping[i][k] == 0:
+                        mapping[i][k] = 2*maps[i][j]
+                        break
+                    
+                maps[i][j] = 0
+                maps[i][j+1] = 0
+            elif maps[i][j] != 0:
+                for k in range(N):
+                    if mapping[i][k] == 0:
+                        mapping[i][k] = maps[i][j]
+                        break
+                maps[i][j] = 0
+                    
+        if maps[i][-1] != 0:
+            for k in range(N):
+                if mapping[i][k] == 0:
+                    mapping[i][k] = maps[i][N-1]
+                    break
+            maps[i][N-1] = 0
+    return mapping
+
+def right_solve(maps):
+    mapping = [[0]*N for i in range(N)]
+    for i in range(N):
+        for j in range(1,N):
+            if maps[i][N-j] == maps[i][N-j-1]:
+                    
+                for k in range(1,N+1):
+                    if mapping[i][N-k] == 0:
+                        mapping[i][N-k] = 2*maps[i][N-j]
+                        break
+                    
+                maps[i][N-j] = 0
+                maps[i][N-j-1] = 0
+            elif maps[i][N-j] != 0:
+                for k in range(1,N+1):
+                    if mapping[i][N-k] == 0:
+                        mapping[i][N-k] = maps[i][N-j]
+                        break
+                maps[i][N-j] = 0
+                    
+        if maps[i][0] != 0:
+            for k in range(1,N):
+                if mapping[i][N-k] == 0:
+                    mapping[i][N-k] = maps[i][0]
+                    break
+            maps[i][0] = 0
+    return mapping
+
+T = int(input())
+
+for _ in range(T):
+    maps = []
+    N, dire = input().split()
+    N=int(N)
+    map_tmp = [[0]*N for i in range(N)]
+    
+    for i in range(N):
+        map_ = list(map(int,input().split()))
+        maps.append(map_)
+
+        
+    if dire == dires[0]:
+        maps = up(maps)
+        maps = up_solve(maps)
+    if dire == dires[1]:
+        maps = down(maps)
+        maps = down_solve(maps)
+    if dire == dires[2]:
+        maps = left(maps)
+        maps = left_solve(maps)
+    if dire == dires[3]:
+        maps = right(maps)
+        maps = right_solve(maps)
+    print('#'+str(_+1))
+    for j in range(N):
+        for i in range(N):
+            print(maps[j][i], end=' ')
+        print()
+                    
+    
