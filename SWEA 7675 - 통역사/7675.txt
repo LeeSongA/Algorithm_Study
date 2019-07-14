@@ -1,0 +1,34 @@
+End_p = ['?','.','!']
+Large=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+Small=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
+T= int(input())
+for i in range(1,T+1):
+    start = 0
+    N = int(input())
+    tmp = []
+    sentence=input()
+    print('#'+str(i), end =' ')
+    
+    for _ in range(len(sentence)):
+        if sentence[_] in End_p:
+            tmp.append(sentence[start:_])
+            start=_+2
+    for j in range(N):
+        count  = 0
+
+        
+        word = tmp[j].split()
+        for a in range(len(word)):
+                    
+            aa = list(word[a])
+            if aa[0] in Large:
+                cc=0
+                for b in range(1,len(aa)):
+                    if aa[b] in Small:
+                        cc+=1
+                if cc == len(aa)-1:
+                    count+=1
+        print(count,end=' ')
+    print()
+    
