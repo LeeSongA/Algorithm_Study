@@ -11,19 +11,15 @@ int move(int r, int c) {
     if (dist[r][c] > 0) {
         return dist[r][c];
     }
-     // 위
     if (r - 1 >= 0 && map[r][c] == map[r - 1][c] - 1) {
         return dist[r][c] = move(r - 1, c) + 1;
     }
-    // 아래
     if (r + 1 < n &&  map[r][c] == map[r + 1][c] - 1) {
         return dist[r][c] = move(r + 1, c) + 1;
     }
-    // 오른쪽
     if (c + 1 < n &&  map[r][c] == map[r][c + 1] - 1) {
         return dist[r][c] = move(r, c + 1) + 1;
-    }  
-    // 왼쪽
+    }
     if (c - 1 >= 0 && map[r][c] == map[r][c - 1] - 1) {
         return dist[r][c] = move(r, c - 1) + 1;
     }
