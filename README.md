@@ -26,6 +26,6 @@
 |                     |SWEA 5432 - 쇠막대기 자르기 | [See here](https://github.com/LeeSongA/Algorithm_Study/tree/master/SWEA%205432%20-%20쇠막대%20자르기)                |
 |                     | SWEA 3462 - 축구 경기 | [See here](https://github.com/LeeSongA/Algorithm_Study/tree/master/SWEA%203462%20-%20축구%20경기)                |
 |                     | 백준 2931 - 가스관 | [See here](https://github.com/LeeSongA/Algorithm_Study/tree/master/백준%202931%20-%20가스관)                |
-|         4차          |   SWEA 8104 - 조 만들기 | [See here](https://github.com/LeeSongA/Algorithm_Study/tree/master/SWEA%208014%20-%20%20조%20만들기)                |
+|         5차          |   SWEA 8104 - 조 만들기 | [See here](https://github.com/LeeSongA/Algorithm_Study/tree/master/SWEA%208014%20-%20%20조%20만들기)                |
 |                     |SWEA 1249 - 보급로 | [See here](https://github.com/LeeSongA/Algorithm_Study/tree/master/SWEA%201249%20-%20보급로)                |
 |                     | SWEA 8191 - 만화책 정렬하기 | [See here](https://github.com/LeeSongA/Algorithm_Study/tree/master/SWEA%208191%20-%20만화책%20정렬하기)                |
